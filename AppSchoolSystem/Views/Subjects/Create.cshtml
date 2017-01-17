@@ -5,59 +5,49 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<div class="col-md-8">
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Form Create New Students</h3>
+        </div><!-- /.box-header -->
 
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Subject</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.SubjectID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SubjectID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SubjectID, "", new { @class = "text-danger" })
+            <div class="box-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">ID Mata Pelajaran</label>
+                    @Html.EditorFor(model => model.SubjectID, new { htmlAttributes = new { @class = "form-control", @placeholder = "ID Mata pelajaran" } })
+                    @Html.ValidationMessageFor(model => model.SubjectID, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">NIK Guru</label>
+                    @Html.EditorFor(model => model.TeacherID, new { htmlAttributes = new { @class = "form-control", @placeholder = "NIK Guru" } })
+                    @Html.ValidationMessageFor(model => model.TeacherID, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Kurikulum</label>
+                    @Html.EditorFor(model => model.Curriculum, new { htmlAttributes = new { @class = "form-control", @placeholder = "Kurikulum" } })
+                    @Html.ValidationMessageFor(model => model.Curriculum, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nilai KKM</label>
+                    @Html.EditorFor(model => model.PassMark, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nilai KKM" } })
+                    @Html.ValidationMessageFor(model => model.PassMark, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-info pull-right">Save</button>
+                        @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-block btn-info btn-sm", @style = "width: 78px" })
+
+                    </div><!-- /.box-footer -->
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Curriculum, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Curriculum, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Curriculum, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TeacherID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TeacherID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TeacherID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PassMark, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PassMark, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PassMark, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+        }
+    </div><!-- /.box -->
 </div>
 
 @section Scripts {

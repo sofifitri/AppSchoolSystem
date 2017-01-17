@@ -5,42 +5,61 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h3>Data Subjects</h3>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                @Html.ActionLink("Create New", "Create", "Subjects", null, new { @class = "btn btn-block btn-info btn-sm", @style = "width: 78px" })
+            </div><!-- /.box-header -->
+            <div class="box-body">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Curriculum)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TeacherID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PassMark)
-        </th>
-        <th></th>
-    </tr>
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID Mata Pelajaran</th>
+                            <th>ID Guru</th>
+                            <th>Kurikulum</th>
+                            <th>Nilai KKM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SubjectID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TeacherID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Curriculum)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PassMark)
+                                </td>
+                               
+                                <td>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Curriculum)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TeacherID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PassMark)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SubjectID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SubjectID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SubjectID })
-        </td>
-    </tr>
-}
-
-</table>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-info btn-sm ">Action</button>
+                                        <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown">
+                                            <span class="caret"></span>
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>@Html.ActionLink("Edit", "Edit", new { id = item.SubjectID })</li>
+                                            <li>@Html.ActionLink("Details", "Details", new { id = item.SubjectID })</li>
+                                            <li>@Html.ActionLink("Delete", "Delete", new { id = item.SubjectID })</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
