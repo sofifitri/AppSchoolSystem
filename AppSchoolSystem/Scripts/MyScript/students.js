@@ -2,13 +2,12 @@
    
     LoadContacts();
 
+
 });
 
 
 function LoadContacts() {
     $('#update_panel').html('Loading Data...');
-
-
     $('#example1').DataTable({
         "paging": true,
         "lengthChange": false,
@@ -32,20 +31,23 @@ function LoadContacts() {
                 }
             }
             
-            if (count > 0) {
-                
+            if (count > 0) {                
                 var $data = $("<table id='example1'></table>").addClass("table table-bordered table-striped");
-                var header = "<thead><tr><th>Contact Person</th><th>Contact No</th><th>Country</th><th>State</th><th></th></tr></thead>";
+                var header = "<thead><tr><th>Id</th><th>Nama</th><th>Kelas</th><th>Jenis Kelamin</th><th></th></tr></thead>";
                 $data.append(header);
                 console.log(" data " + count);
+                
                 $.each(d, function (i, row) {
-                    var $row = $('<tr/>');
-                    $row.append($('<td/>').html(d.students[0]._id));
-                    $row.append($('<td/>').html(d.students[0].nama));
-                    $row.append($('<td/>').html(d.students[0].kelas));
-                    $row.append($('<td/>').html(d.students[0].jenisKelamin));
-                    $row.append($('<td/>').html("<a href='/home/Save/" + row.ContactID + "' class='popup'>Edit</a>&nbsp;|&nbsp;<a href='/home/Delete/" + row.ContactID + "' class='popup'>Delete</a>"));
-                    $data.append($row);
+                    for (var i = 0; i < count; i++) {
+                        var $row = $('<tr/>');
+                        $row.append($('<td/>').html(d.students[i]._id));
+                        $row.append($('<td/>').html(d.students[i].nama));
+                        $row.append($('<td/>').html(d.students[i].kelas));
+                        $row.append($('<td/>').html(d.students[i].jenisKelamin));
+                        $row.append($('<td/>').html("<a href='/home/Save/" + row.ContactID + "' class='popup'>Edit</a>&nbsp;|&nbsp;<a href='/home/Delete/" + row.ContactID + "' class='popup'>Delete</a>"));
+                        $data.append($row);
+                    }
+                    
                 });
 
                 $('#update_panel').html($data);
