@@ -1,9 +1,24 @@
-﻿@model AppSchoolSystem.Models.Student
-
-@{
+﻿@{
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<script>
+
+$(function() {
+
+var entries = [];
+var dmJSON = "http://localhost:8383/api/students/:";
+$.getJSON( dmJSON, function(data) {
+   $.each(data.entries, function(i, f) {
+      var tblRow = "<tr>" + "<td>" + f.id + "</td>" + "<td>" + f.user.username + "</td>" + "<td>" + f.message + "</td>" + "<td> " + f.location + "</td>" +  "<td>" + f.at + "</td>" + "</tr>"
+       $(tblRow).appendTo("#entrydata tbody");
+ });
+
+});
+
+});
+ </script>
 <div class="col-md-8">
     <h3>Delete Data Students</h3>
     <div class="box box-info">
@@ -18,7 +33,7 @@
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.Name)
+                    sdsd
                 </dd>
 
                 <dt>
@@ -26,7 +41,7 @@
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.Grade)
+                   asds
                 </dd>
 
                 <dt>
@@ -34,7 +49,7 @@
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.DateOfBirth)
+                    sdsdsd
                 </dd>
 
                 <dt>
@@ -42,7 +57,7 @@
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.Gender)
+                    sdsd
                 </dd>
 
             </dl>
@@ -53,7 +68,7 @@
                     @Html.AntiForgeryToken()
 
                     <div class="form-actions no-color">
-                        <button type="submit" value="Delete" class="btn btn-info pull-right" style="width: 78px">Delete</button>        
+                        <button type="submit" value="Delete" class="btn btn-info pull-right" style="width: 78px">Delete</button>
                         @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-info", @style = "width: 78px" })
                     </div>
                 }

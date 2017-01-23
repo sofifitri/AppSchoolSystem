@@ -14,6 +14,16 @@ namespace AppSchoolSystem.Controllers
             return View();
         }
 
-       
+        public ActionResult Create()
+        {
+            return PartialView("Create");
+        }
+
+        public ActionResult Delete()
+        {
+            return PartialView("Delete");
+        }
+
+
     }
 }
